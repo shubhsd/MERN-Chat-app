@@ -3,4 +3,14 @@
     min-height: 100vh;
     display: flex;
     background: linear-gradient(to right, #6A82FB, #FC5C7D);
+    color:'black';
 }
+
+*:focus {
+    box-shadow: none !important;
+  }
+  
+  *[data-focus] {
+    box-shadow: none !important;
+  }
+  
