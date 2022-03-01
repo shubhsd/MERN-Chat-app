@@ -5,14 +5,14 @@ import Signup from '../components/Authentication/Signup';
 
 const Homepage = () => {
     return (
-        <Container maxW='x1' centerContent>
+        <Container maxW='container.sm' centerContent>
             {/* Box works similar to div */}
             <Box
                 d="flex"
                 justifyContent="center"
                 p={2}
                 bg={'white'}
-                w="45%"
+                w="100%"
                 m="40px 0 15px 0"
                 borderRadius="lg"
                 borderWidth="1px"
@@ -21,7 +21,7 @@ const Homepage = () => {
             </Box>
             <Box
                 bg={"white"}
-                w="45%"
+                w="100%"
                 p={4}
                 borderRadius="lg"
                 borderWidth={"1px"}
