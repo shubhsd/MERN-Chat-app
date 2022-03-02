@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const colors = require('colors');
 const userRoutes = require('./routes/userRoutes');
+const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 // Creating instance of express
 const app = express();
@@ -12,7 +13,9 @@ app.use(express.json()); //to accept json data
 
 // Using dotenv
 dotenv.config();
+
 connectDB();
+
 // Creating api
 app.get('/', (req, res) => {
     res.send("Api is running successfully");
@@ -20,15 +23,19 @@ app.get('/', (req, res) => {
 
 app.use('/api/user', userRoutes);
 
-// app.get('/api/chat', (req, res) => {
-//     res.send(chats)
-// });
+// ERROR HANDLER MIDDLEWARE
+app.use(notFound);
+app.use(errorHandler);
 
-// app.get('/api/chat/:id', (req, res) => {
-//     // console.log(req);
-//     const singleChat = chats.find(c => c._id === req.params.id);
-//     res.send(singleChat);
-// });
+app.get('/api/chat', (req, res) => {
+    res.send(chats)
+});
+
+app.get('/api/chat/:id', (req, res) => {
+    // console.log(req);
+    const singleChat = chats.find(c => c._id === req.params.id);
+    res.send(singleChat);
+});
 
 // Starting our server
 const PORT = process.env.PORT || 5000;
